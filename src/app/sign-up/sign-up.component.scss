@@ -1,0 +1,23 @@
+.fontt{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+}
+hr
+{
+  width: 100%;
+  border:1px solid #6450cf;
+}
+
+.radius{
+  border-radius: 2rem;
+}
+
+.btn-outline-b{
+  border: 1px solid #6450CF;
+  color: #6450CF;
+  border-radius: 50px;
+}
+.btn-outline-b:hover{
+  background-color: #6450CF;
+  color: white;
+}

@@ -1,0 +1,31 @@
+<app-nav-bar></app-nav-bar>
+<header class="masthead" style="background-image:url('../../assets/img/home-bg.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 mx-auto">
+        <div class="site-heading">
+          <h1>Add Blog</h1></div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container p-4 bg-light rounded shadow-sm">
+  <div class="h3" style="text-decoration: underline">Write Your Blog Here..</div>
+  <form>
+    <div class="form-group">
+      <input type="text" class="form-control mt-5" name="category" placeholder="Category" [(ngModel)]="category" >
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="title" placeholder="Heading" [(ngModel)]="title" >
+    </div>
+    <div class="form-group shadow-textarea">
+      <textarea class="form-control z-depth-1" name="content" id="exampleFormControlTextarea6" rows="20" placeholder="Write here..." [(ngModel)]="content"></textarea>
+    </div>
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="switch1" [ngModel]="data" (change)="checkData(data)">
+      <label class="custom-control-label h6" for="switch1">Make Blog Private to Followers only..</label>
+    </div>
+    <button class="btn btn-primary mt-1" (click)="addblog()">Post Blog..</button>
+  </form>
+</div>

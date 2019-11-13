@@ -1,0 +1,158 @@
+<app-nav-bar></app-nav-bar>
+<header class="masthead" style="background-image:url('../../assets/img/home-bg.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 mx-auto">
+        <div class="site-heading">
+          <h1>My Profile</h1></div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container-fluid">
+  <div class="row mx-4 my-5">
+    <div class="col-sm-3 col-md-4 col-lg-5 mx-4 bg-white rounded shadow h-50">
+      <div class="container pt-4">
+        <div class="text-center pt-4">
+          <img class="rounded-circle shadow-sm" src="../../assets/bg.jpeg" style="width:200px;height:200px;border:1px solid gray">
+        </div>
+        <h2 class="pt-3 text-center">{{users.name}}</h2>
+        <p class="text-center"> Joined on: 2019</p>
+        <hr>
+        <div class="container d-flex justify-content-around">
+          <div class="text-bold h5"> Followers </div>
+          <div class="text-bold h5"> Following </div>
+        </div>
+        <div class="container d-flex justify-content-around">
+          <div class="text-bold h5"> 10 </div>
+          <div class="text-bold h5"> {{totalFollowing}} </div>
+        </div>
+        <hr>
+       <div class="text-center pb-4"> <button class="btn btn-primary"> Follow </button> </div>
+      </div>
+    </div>
+    <div class="col-sm-8 col-md-7 col-lg-6 ml-4 bg-white rounded shadow h-100">
+      <div class="container my-5">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#blogs">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#following">Following</a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div id="blogs" class="container tab-pane active"><br>
+            <div class="container d-flex justify-content-between">
+              <h3 class="mb-3">Blogs</h3>
+              <a routerLink="/add-blog">Add a new Blog </a>
+            </div>
+            <div class="container bg-light p-3 mb-3" style="border: 1px solid gray" *ngFor="let bloog of blogs">
+              <div class="container p-0 d-flex justify-content-between">
+                <span class="h6 text-capitalize" style="font-size: 1.3rem">{{bloog.title}}</span>
+                  <a (click)="gotoblog(bloog.blogId)">Edit blog </a>
+                  <a (click)="delelteblog(bloog.blogId)">Delete Blog </a>
+              </div>
+              <div class="lead p-0" style="font-size: 1rem"> <span style="font-size: 1rem">created on: </span>{{bloog.createdAt}}</div>
+              <div class="pt-2">{{bloog.content}}</div>
+            </div>
+          </div>
+          <div id="about" class="container tab-pane fade"><br>
+            <div class="container d-flex justify-content-between">
+              <h3 class="mb-3">About</h3>
+              <a href="#">Edit Details</a>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                  <h5 class="card-header-text">Basic Information</h5>
+                </div>
+                  <div class="card-block">
+                    <div class="row">
+                      <div class="ml-5 col-lg-6 col-md-12 col-sm-12">
+                        <table class="table table-responsive">
+                            <tbody>
+                            <tr>
+                              <th class="">Full Name</th>
+                              <td class="text-muted">{{users.name}}</td>
+                            </tr>
+                            <tr>
+                              <th class="">Username</th>
+                              <td class="text-muted">{{users.username}}</td>
+                            </tr>
+                            <tr>
+                              <th class="">Gender</th>
+                              <td class="text-muted">Female</td>
+                            </tr>
+                            <tr>
+                              <th class="">Birth Date</th>
+                              <td class="text-muted">October 25th, 1990</td>
+                            </tr>
+                            <tr>
+                              <th class="">Location</th>
+                              <td class="text-muted">New York, USA</td>
+                            </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-header-text">Contact Information</h5>
+              </div>
+              <div class="card-block">
+                <div class="row">
+                  <div class="ml-5 col-lg-6 col-md-12 col-sm-12">
+                    <table class="table table-responsive">
+                      <tbody>
+                      <tr>
+                        <th class="">Email</th>
+                        <td class="text-muted">{{users.email}}</td>
+                      </tr>
+                      <tr>
+                        <th class="">Phone</th>
+                        <td class="text-muted">Female</td>
+                      </tr>
+                      <tr>
+                        <th class="">Linkedin</th>
+                        <td class="text-muted">October 25th, 1990</td>
+                      </tr>
+                      <tr>
+                        <th class="">Google</th>
+                        <td class="text-muted">New York, USA</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="following" class="container tab-pane fade"><br>
+            <h3>Following </h3>
+            <ul class="widget-users row">
+              <li class="col-sm-2 col-md-4 col-md-6" *ngFor="let follow of followers">
+                <div class="img">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                </div>
+                <div class="details">
+                  <div class="name d-flex justify-content-between">
+                    <a (click)="goToUser(follow.following.userId)">{{follow.following.username}} </a>
+                    <button class="btn-sm btn-primary mr-2" (click)="unfollow(follow.followId)">Unfollow</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container p-5 mt-5 shadow bg-white radius" style="width: 500px;">
+  <!-- Default form login -->
+  <form>
+
+    <p class="fontt pb-1 text-left text-underline" style="font-size:2rem">Login..</p>
+    <hr>
+    <!-- Email -->
+    <input type="text" class="form-control mt-4" placeholder="Username" name="username" [(ngModel)]="username">
+
+    <!-- Password -->
+    <input type="password" class="form-control mt-4" placeholder="Password" name="password" [(ngModel)]="password">
+
+    <div class="d-flex justify-content-around mt-4">
+      <div>
+        <!-- Remember me -->
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+          <label class="custom-control-label fontt" for="defaultLoginFormRemember">Remember me</label>
+        </div>
+      </div>
+      <div>
+        <!-- Forgot password -->
+        <a href="" class="fontt">Forgot password?</a>
+      </div>
+    </div>
+
+    <!-- Sign in button -->
+    <button type="button" class="btn btn-outline-b btn-block mt-3 mb-3 fontt" (click)="login()">Login</button>
+
+    <!-- Register -->
+    <p class="text-center fontt">Not a member?
+      <a routerLink="/sign-up" class="fontt">Sign up</a>
+    </p>
+
+    <!-- Social login -->
+    <div class="text-center fontt">
+      <p>or sign in with:</p>
+      <a href="#" class="mx-2" role="button"><i class="fa fa-facebook-square " aria-hidden="true" style="font-size: 2rem"></i></a>
+      <a href="#" class="mx-2" role="button"><i class="fa fa-google" style="font-size: 2rem;"></i></a>
+    </div>
+  </form>
+  <!-- Default form login -->
+</div>
