@@ -21,6 +21,6 @@ export class AuthenticationService {
   getAll() {
     const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({ Authorization: 'Basic ' + token});
-    return this.http.get('http://localhost:2018/user/Getuser', { headers});
+    return this.http.get('http://localhost:2018/users/getuser', { headers});
   }
 }

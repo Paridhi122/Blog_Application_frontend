@@ -8,6 +8,8 @@ import {AddBlogComponent} from './add-blog/add-blog.component';
 import {EditBlogComponent} from './edit-blog/edit-blog.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {SingleBlogComponent} from './single-blog/single-blog.component';
+import {ExploreComponent} from './explore/explore.component';
+import {NewcComponent} from './newc/newc.component';
 
 
 const routes: Routes = [
@@ -19,6 +21,8 @@ const routes: Routes = [
   {path: 'edit-blog', component: EditBlogComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'single-blog', component: SingleBlogComponent},
+  {path: 'explore', component: ExploreComponent},
+  {path: 'newc', component: NewcComponent},
   { path: ' ', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', component: LoginComponent}
 ];

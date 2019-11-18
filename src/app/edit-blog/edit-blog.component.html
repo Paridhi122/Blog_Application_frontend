@@ -1,19 +1,37 @@
-<div class="container my-4 py-4 text-center h1 bg-white rounded shadow-lg">Edit Blog</div>
+<app-nav-bar></app-nav-bar>
+<header class="masthead" style="background-image:url('../../assets/img/home-bg.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 mx-auto">
+        <div class="site-heading">
+          <h1>Edit Blog</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 <div class="container p-4 bg-light rounded shadow-sm">
   <form>
     <div class="form-group">
-      <input type="text" class="form-control mt-5" name="title" placeholder="Category" [(ngModel)]="category" value="{{blogs.category}}">
+      <div class="font-weight-bold mt-5">Category:</div>
+      <input type="text" class="form-control mt-2" name="category" placeholder="Category" [(ngModel)]="category" value="{{blogs.category}}">
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" name="title" placeholder="Heading" [(ngModel)]="title" value="{{blogs.title}}">
+      <div class="font-weight-bold mt-3">Title:</div>
+      <input type="text" class="form-control mt-2" name="title" placeholder="Heading" [(ngModel)]="title" value="{{blogs.title}}">
     </div>
     <div class="form-group shadow-textarea">
-      <textarea class="form-control z-depth-1" name="content" id="exampleFormControlTextarea6" rows="20" placeholder="Write here..." [(ngModel)]="content" value="{{blogs.content}}"></textarea>
+      <div class="font-weight-bold mt-3">Content:</div>
+      <textarea class="form-control z-depth-1 mt-2" id="exampleFormControlTextarea6" rows="20" placeholder="Write here..." name="content" [(ngModel)]="content" value="{{blogs.content}}"></textarea>
     </div>
     <div class="custom-control custom-switch">
-      <input type="checkbox" class="custom-control-input" id="switch1">
+      <input type="checkbox" class="custom-control-input" id="switch1" [ngModel]="data" (change)="checkData(data)">
       <label class="custom-control-label h6" for="switch1">Make Blog Private to Followers only..</label>
     </div>
+    <div class="container d-flex justify-content-between">
     <button class="btn btn-primary mt-1" (click)="editblog()">Save Changes</button>
+    <button class="btn btn-primary mt-1" (click)="delelteblog(blogs.blogId)">Delete Blog</button>
+    </div>
   </form>
 </div>

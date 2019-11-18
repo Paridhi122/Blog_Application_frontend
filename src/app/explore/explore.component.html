@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-10 col-lg-8 mx-auto">
         <div class="site-heading">
-          <h1>HOME</h1></div>
+          <h1>Explore</h1></div>
       </div>
     </div>
   </div>
@@ -26,22 +26,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-lg-8">
-      <div *ngIf="this.set == true">
-        <div class="post-preview" *ngFor="let blooog of blogs">
-          <a (click)="gotoblog(blooog.blogId)"><h2 class="post-title">{{blooog.title}}</h2></a>
-          <div class="post-subtitle">{{blooog.content}}</div>
-          <p class="post-meta">Posted by&nbsp;<a href="#">{{blooog.users.name}} on {{blooog.createdAt}}</a></p>
+        <div class="post-preview" *ngFor="let blog of blogs | orderBy: '-createdAt'">
+            <h2 class="post-title" (click)="gotoblog(blog.blogId)">{{blog.title}}</h2>
+            <div class="post-subtitle">{{blog.content}}</div>
+          <p class="post-meta">Posted by&nbsp;<a (click)="goToUser(blog.users.userId)">{{blog.users.name}}</a> on {{blog.createdAt}}</p>
           <hr>
         </div>
-      </div>
-      <div *ngFor="let bloog of blogs">
-        <div class="post-preview" *ngFor="let blooog of bloog">
-          <a (click)="gotoblog(blooog.blogId)"><h2 class="post-title">{{blooog.title}}</h2></a>
-            <div class="post-subtitle">{{blooog.content}}</div>
-          <p class="post-meta">Posted by&nbsp;<a href="#">{{blooog.users.name}} on {{blooog.createdAt}}</a></p>
-          <hr>
-        </div>
-      </div>
     </div>
   </div>
 </div>

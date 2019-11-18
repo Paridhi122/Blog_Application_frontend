@@ -3,17 +3,21 @@
     <h2 class="h2 fontt">Sign Up</h2>
     <p class="fontt">Please fill in this form to create an account!</p>
     <hr>
-    <div class="form-group">
-      <input type="text" class="form-control" name="name" placeholder="First Name" [(ngModel)]="name" required>
+    <div class="form-group" [class.has-error]="nameControl.invalid && nameControl.touched" [class.has-success]="nameControl.valid">
+      <label for="name" class="control-label">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="name" name="name" #nameControl="ngModel">
+      <span class="help-block" *ngIf="nameControl.invalid && nameControl.touched">Name is required</span>
+    </div>
+    <div class="form-group" [class.has-error]="emailControl.invalid && nameControl.touched" [class.has-success]="emailControl.valid">
+      <label for="email" class="control-label">Email</label>
+      <input type="email" id="email" required email class="form-control" [(ngModel)]="email" name="email" placeholder="Email" #emailControl="ngModel">
+      <span class="help-block" *ngIf="emailControl.invalid && emailControl.touched">Email is required</span>
     </div>
     <div class="form-group">
-      <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="email">
+      <input type="text" class="form-control" name="username" placeholder="Username">
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" name="username" placeholder="Username" [(ngModel)]="username">
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password">
+      <input type="password" class="form-control" name="password" placeholder="Password" >
     </div>
     <div class="form-group">
       <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" >
@@ -26,3 +30,4 @@
     </div>
   </form>
 </div>
+

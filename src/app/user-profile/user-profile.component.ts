@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../user.service';
 import {BlogService} from '../blog.service';
 
@@ -10,21 +10,34 @@ import {BlogService} from '../blog.service';
 })
 export class UserProfileComponent implements OnInit {
 Id: number;
-user1;
+users;
 blogs;
 totalfollowing;
 followers;
-  constructor(private activated: ActivatedRoute, private user: UserService, private blog: BlogService) { }
+set;
+  constructor(private activated: ActivatedRoute, private user: UserService, private blog: BlogService, private router: Router) { }
 
   ngOnInit() {
     this.activated.queryParams.subscribe((data) => {
       this.Id = data.id;
     });
+    this.user.getstatus(this.Id).subscribe((data) => {
+      this.set = data;
+    });
     this.user.getUserById(this.Id).subscribe( data => {
-      this.user1 = data;
+      this.users = data;
     });
     this.blog.getblogbyuser(this.Id).subscribe(data => {
       this.blogs = data;
+    });
+  }
+  gotoblog(id: number) {
+    this.router.navigate(['/single-blog'], { queryParams: {id }});
+  }
+  followuser(id: number) {
+    console.log(id);
+    this.user.follow(id).subscribe(data => {
+      this.router.navigate(['/home']);
     });
   }
 

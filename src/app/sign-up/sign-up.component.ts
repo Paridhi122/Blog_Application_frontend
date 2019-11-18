@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from '../app.service';
 import {Router} from '@angular/router';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,11 +13,23 @@ export class SignUpComponent implements OnInit {
   password;
   email;
   name;
-  constructor(private service: AppService, private router: Router) { }
+  users;
+  set;
+  constructor(private service: AppService, private router: Router, private user: UserService) { }
 
   ngOnInit() {
+    // this.user.getallusers().subscribe(data => {
+    //   this.users = data;
+    // });
+  }
+  checkusername() {
+    if (this.username === this.users.username) {
+      alert('this username already exists!!');
+    }
   }
   adduser() {
+   // this.checkusername();
+    console.log(this.username);
     const user = {
       username: this.username,
       password: this.password,

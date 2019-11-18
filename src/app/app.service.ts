@@ -20,6 +20,15 @@ export class AppService {
 
   addUser(user) {
     return this.httpClient.post('http://localhost:2018/users/addUser' , user).subscribe(res =>
-      this.router.navigate(['/home']));
+      this.router.navigate(['/login']));
+  }
+
+  isAdmin() {
+    const ad = sessionStorage.getItem('admin');
+    return JSON.parse(ad);
+  }
+  myfun(bool: boolean) {
+    sessionStorage.setItem('admin', String(bool));
+    return bool;
   }
 }

@@ -13,6 +13,8 @@ export class EditBlogComponent implements OnInit {
   category;
   Id;
   blogs;
+  status;
+  data;
   constructor(private blog: BlogService, private activated: ActivatedRoute) { }
 
   ngOnInit() {
@@ -23,13 +25,28 @@ export class EditBlogComponent implements OnInit {
       this.blogs = data;
     });
   }
+
+  checkData(data1: boolean) {
+    this.data = !data1;
+    if (!data1 === false) {
+      this.status = 0;
+    } else {
+      this.status = 1;
+    }
+  }
   editblog() {
     const bloog = {
       title: this.title,
       content: this.content,
-      category: this.category
+      category: this.category,
+      status: this.status
     };
     console.log(bloog);
     this.blog.editBlog(this.Id, bloog);
+  }
+
+  delelteblog(id: number) {
+    confirm('Are you sure you want to delete this blog?');
+    this.blog.deleteblog(id);
   }
 }

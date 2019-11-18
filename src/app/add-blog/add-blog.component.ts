@@ -33,5 +33,6 @@ status;
       status: this.status
     };
     this.blog.addBlogs(bloog);
+    alert('Blog Added!');
   }
 }

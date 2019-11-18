@@ -15,6 +15,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SingleBlogComponent } from './single-blog/single-blog.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {OrderModule} from 'ngx-order-pipe';
+import { ExploreComponent } from './explore/explore.component';
+import { OrderByPipe } from './order-by.pipe';
+import { NewcComponent } from './newc/newc.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {OrderModule} from 'ngx-order-pipe';
     EditBlogComponent,
     UserProfileComponent,
     SingleBlogComponent,
-    NavBarComponent
+    NavBarComponent,
+    ExploreComponent,
+    OrderByPipe,
+    NewcComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,7 @@ import {OrderModule} from 'ngx-order-pipe';
     HttpClientModule,
     FormsModule,
     OrderModule
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

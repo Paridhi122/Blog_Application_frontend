@@ -19,13 +19,21 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
-    console.log(this.username , this.password);
     this.authService.authenticate(this.username, this.password).subscribe(
       data => {
-        this.appService.isLoggedin(true);
-        this.router.navigate(['home']);
+        console.log(this.password);
+        if (this.username == undefined || this.password == undefined) {
+          alert('Fields cannot be empty');
+        } else {
+          this.appService.isLoggedin(true);
+          this.router.navigate(['home']);
+        }
       }
     );
+  }
+
+  logout() {
+    this.appService.isLoggedin(false);
   }
 
 }
